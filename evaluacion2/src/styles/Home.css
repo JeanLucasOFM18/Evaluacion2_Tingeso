@@ -1,0 +1,62 @@
+.detel h1{
+    font-size: 50px;
+    color: #212121;
+    margin-bottom: 20px;
+}
+span{
+    color: orange;
+}
+.detel p{
+    color: #555;
+    line-height: 22px;
+}
+.images{
+    width: 45%;
+    height: 80%;
+    position: absolute;
+    bottom: 0;
+    right: 100px;
+}
+.images img{
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: bottom 1s, left 1s;
+}
+.images:hover .shape{
+    bottom: 40px;
+}
+.images:hover .milk{
+    left: 45%;
+}
+.text-box{
+    color: #fff;
+    position: absolute;
+    bottom: 8%;
+    transform: translateY(-50%);
+    margin-left: 50px;
+}
+.text-box h1{
+    font-family: Impact, sans-serif;
+    font-size: 190px;
+    line-height: 160px;
+    color: transparent;
+    -webkit-text-stroke: 1px #fff;
+    background: url("https://i.postimg.cc/FKDK7LSZ/back.png");
+    -webkit-background-clip: text;
+    background-position: 0 0;
+    animation: back 20s linear infinite;
+}
+@keyframes back {
+    100%{
+        background-position: 2000px 0;
+    }
+}
+.text-box h3{
+    font-family: Impact, sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: 20px;
+}

@@ -12,7 +12,6 @@ import Default  from "./pages/Default";
 function App() {
   return (
     <div>
-      <h1>MilkStgo</h1>
       <Routes>
         <Route path="/" element={<Layout />}>
            <Route path="/" element={<Home />} />

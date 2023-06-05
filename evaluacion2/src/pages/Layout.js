@@ -2,8 +2,11 @@ import { Outlet, Link } from "react-router-dom";
 import "../styles/Navbar.css";
 
 const Layout = () =>{
- return <div>
+ return <div className="hero">
     <nav>
+      <div className="logo">
+        <Link to="/">MilkStgo</Link>
+      </div>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -25,7 +28,6 @@ const Layout = () =>{
           </li>
         </ul>
     </nav>
-    <hr />
     <Outlet />
  </div>;
 }
