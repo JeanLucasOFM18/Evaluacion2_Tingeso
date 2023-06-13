@@ -30,6 +30,6 @@ spring:
           predicates:
             - Path=/porcentaje/**
         - id: pago-service
-            uri: lb://pago-service
-            predicates:
-              - Path=/pago/**
+          uri: lb://pago-service
+          predicates:
+            - Path=/pago/**
