@@ -133,23 +133,23 @@ public class PagoService {
     }
 
     public List<Acopio> findByProveedorAcopio (String codigo){
-        return restTemplate.getForObject("http://localhost:8002/acopio/findByProveedor/{codigo}", List.class);
+        return restTemplate.getForObject("http://localhost:8002/acopio/findByProveedor/{codigo}" + codigo, List.class);
     }
 
     public List<Date> findAllDistinctDates(String codigo){
-        return restTemplate.getForObject("http://localhost:8002/acopio/findAllDistinctDates/{codigo}", List.class);
+        return restTemplate.getForObject("http://localhost:8002/acopio/findAllDistinctDates/{codigo}" + codigo, List.class);
     }
 
     public List<Date> findAllByFecha(String codigo){
-        return restTemplate.getForObject("http://localhost:8002/acopio/findAllByFecha/{codigo}", List.class);
+        return restTemplate.getForObject("http://localhost:8002/acopio/findAllByFecha/{codigo}" + codigo, List.class);
     }
 
     public List<Date> contarTurnos(String codigo, String turno){
-        return restTemplate.getForObject("http://localhost:8002/acopio/contarTurnos/{codigo}/{turno}", List.class);
+        return restTemplate.getForObject("http://localhost:8002/acopio/contarTurnos/{codigo}/{turno}" + codigo + "/" + turno, List.class);
     }
 
     public Porcentaje findByProveedor(String codigo){
-        return restTemplate.getForObject("http://localhost:8003/porcentaje/findByProveedor/{codigo}", Porcentaje.class);
+        return restTemplate.getForObject("http://localhost:8003/porcentaje/findByProveedor/{codigo}" + codigo, Porcentaje.class);
     }
 
     public String determinarQuincena(List<Acopio> acopio){
