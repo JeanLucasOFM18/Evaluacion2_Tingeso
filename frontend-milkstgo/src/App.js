@@ -1,13 +1,13 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Layout  from "./pages/Layout";
-import Home  from "./pages/Home";
-import Registro  from "./pages/Registro";
-import Proveedores  from "./pages/Proveedores";
-import Acopio  from "./pages/Acopio";
-import Porcentaje  from "./pages/Porcentaje";
-import Calculos  from "./pages/Calculos";
-import Default  from "./pages/Default";
+import Layout  from "./components/Layout";
+import Home  from "./components/Home";
+import Registro  from "./components/Registro";
+import Proveedores  from "./components/Proveedores";
+import Acopio  from "./components/Acopio";
+import Porcentaje  from "./components/Porcentaje";
+import Calculos  from "./components/Calculos";
+import Default  from "./components/Default";
 
 function App() {
   return (

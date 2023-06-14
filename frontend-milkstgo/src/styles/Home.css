@@ -14,14 +14,14 @@ span{
     width: 45%;
     height: 80%;
     position: absolute;
-    bottom: 0;
+    bottom: 50px;
     right: 100px;
 }
 .images img{
     height: 100%;
     position: absolute;
     left: 50%;
-    bottom: 0;
+    bottom: 0px;
     transform: translateX(-50%);
     transition: bottom 1s, left 1s;
 }
@@ -32,7 +32,7 @@ span{
     left: 45%;
 }
 .text-box{
-    color: #fff;
+    color: #ffffff;
     position: absolute;
     bottom: 8%;
     transform: translateY(-50%);
@@ -43,9 +43,9 @@ span{
     font-size: 190px;
     line-height: 160px;
     color: transparent;
-    -webkit-text-stroke: 1px #fff;
+    -webkit-text-stroke: 1px #ffffff;
     background: url("https://i.postimg.cc/FKDK7LSZ/back.png");
-    -webkit-background-clip: text;
+    background-clip: text;
     background-position: 0 0;
     animation: back 20s linear infinite;
 }
