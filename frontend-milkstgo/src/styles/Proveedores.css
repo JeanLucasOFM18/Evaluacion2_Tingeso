@@ -1,0 +1,40 @@
+.container2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Resto de estilos */
+}
+.title-effect {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    position: relative;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+}
+
+.title-effect::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 60px;
+    height: 5px;
+    background-color: #08efae;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+.title-effect:hover::after {
+    width: 80%;
+}
+
+.row {
+    width: 1000px;
+}

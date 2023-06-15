@@ -75,8 +75,7 @@ public class AcopioController {
     public String prueba(){
         return "hola";
     }
-
-    @GetMapping
+    
     @PostMapping("/subir")
     public String upload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         acopioServices.guardar(file);
