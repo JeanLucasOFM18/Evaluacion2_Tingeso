@@ -1,0 +1,68 @@
+.container2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Resto de estilos */
+}
+.header .btn button{
+    margin-left: 20px;
+    font-weight: 700;
+    color: #1b3039;
+    padding: 9px 25px;
+    background: #eceff1;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.header .btn button:hover{
+    background-color: #e2f1f8;
+    color: #0eb4ff;
+    transform: scale(1.1);
+}
+.header .btn-2 button {
+    margin-left: 20px;
+    font-weight: 700;
+    color: #1b3039;
+    padding: 9px 25px;
+    background: #eceff1;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.header .btn-2 button:hover{
+    background-color: #e2f1f8;
+    color: #0eb4ff;
+    transform: scale(1.1);
+}
+.title-effect {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    position: relative;
+    margin-bottom: 2rem; /* Ajusta el valor según tus necesidades */
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+}
+
+.title-effect::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 60px;
+    height: 5px;
+    background-color: #08efae;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+.title-effect:hover::after {
+    width: 80%;
+}
