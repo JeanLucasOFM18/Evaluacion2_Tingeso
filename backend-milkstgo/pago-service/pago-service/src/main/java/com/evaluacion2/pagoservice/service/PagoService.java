@@ -7,6 +7,9 @@ import com.evaluacion2.pagoservice.model.Proveedor;
 import com.evaluacion2.pagoservice.repository.PagoRepository;
 import lombok.Generated;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -120,36 +123,114 @@ public class PagoService {
         return true;
     }
 
+    /*
     public List<Proveedor> listadoProveedores() {
-        return restTemplate.getForObject("http://localhost:8001/proveedor/listado", List.class);
+        List<Proveedor> proveedores = restTemplate.getForObject("http://proveedor-service/proveedor/listado", List.class);
+        return proveedores;
+    }*/
+
+    public List<Proveedor> listadoProveedores() {
+        String url = "http://proveedor-service/proveedor/listado";
+        ResponseEntity<List<Proveedor>> responseEntity = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Proveedor>>() {}
+        );
+        List<Proveedor> proveedores = responseEntity.getBody();
+        return proveedores;
     }
 
     public Proveedor obtenerPorCodigo(String codigo) {
-        return restTemplate.getForObject("http://localhost:8001/proveedor/obtenerPorCodigo/" + codigo, Proveedor.class);
+        return restTemplate.getForObject("http://proveedor-service/proveedor/obtenerPorCodigo/" + codigo, Proveedor.class);
     }
 
+    /*
     public List<Acopio> obtenerDataAcopio(){
-        return restTemplate.getForObject("http://localhost:8002/acopio/obtenerData", List.class);
+        return restTemplate.getForObject("http://acopio-service/acopio/obtenerData", List.class);
     }
+
 
     public List<Acopio> findByProveedorAcopio (String codigo){
-        return restTemplate.getForObject("http://localhost:8002/acopio/findByProveedor/{codigo}" + codigo, List.class);
+        return restTemplate.getForObject("http://acopio-service/acopio/findByProveedor/" + codigo, List.class);
+    }*/
+
+    public List<Acopio> obtenerDataAcopio() {
+        String url = "http://acopio-service/acopio/obtenerData";
+        ResponseEntity<List<Acopio>> responseEntity = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Acopio>>() {}
+        );
+        List<Acopio> dataAcopio = responseEntity.getBody();
+        return dataAcopio;
     }
 
+    public List<Acopio> findByProveedorAcopio(String codigo) {
+        String url = "http://acopio-service/acopio/findByProveedor/" + codigo;
+        ResponseEntity<List<Acopio>> responseEntity = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Acopio>>() {}
+        );
+        List<Acopio> acopios = responseEntity.getBody();
+        return acopios;
+    }
+
+    /*
     public List<Date> findAllDistinctDates(String codigo){
-        return restTemplate.getForObject("http://localhost:8002/acopio/findAllDistinctDates/{codigo}" + codigo, List.class);
+        return restTemplate.getForObject("http://acopio-service/acopio/findAllDistinctDates/" + codigo, List.class);
     }
 
     public List<Date> findAllByFecha(String codigo){
-        return restTemplate.getForObject("http://localhost:8002/acopio/findAllByFecha/{codigo}" + codigo, List.class);
+        return restTemplate.getForObject("http://acopio-service/acopio/findAllByFecha/" + codigo, List.class);
     }
 
     public List<Date> contarTurnos(String codigo, String turno){
-        return restTemplate.getForObject("http://localhost:8002/acopio/contarTurnos/{codigo}/{turno}" + codigo + "/" + turno, List.class);
+        return restTemplate.getForObject("http://acopio-service/acopio/contarTurnos/" + codigo + "/" + turno, List.class);
+    }
+    */
+
+    public List<Date> findAllDistinctDates(String codigo) {
+        String url = "http://acopio-service/acopio/findAllDistinctDates/" + codigo;
+        ResponseEntity<List<Date>> responseEntity = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Date>>() {}
+        );
+        List<Date> distinctDates = responseEntity.getBody();
+        return distinctDates;
+    }
+
+    public List<Date> findAllByFecha(String codigo) {
+        String url = "http://acopio-service/acopio/findAllByFecha/" + codigo;
+        ResponseEntity<List<Date>> responseEntity = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Date>>() {}
+        );
+        List<Date> fechas = responseEntity.getBody();
+        return fechas;
+    }
+
+    public List<Date> contarTurnos(String codigo, String turno) {
+        String url = "http://acopio-service/acopio/contarTurnos/" + codigo + "/" + turno;
+        ResponseEntity<List<Date>> responseEntity = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Date>>() {}
+        );
+        List<Date> turnosContados = responseEntity.getBody();
+        return turnosContados;
     }
 
     public Porcentaje findByProveedor(String codigo){
-        return restTemplate.getForObject("http://localhost:8003/porcentaje/findByProveedor/{codigo}" + codigo, Porcentaje.class);
+        return restTemplate.getForObject("http://porcentaje-service/porcentaje/findByProveedor/" + codigo, Porcentaje.class);
     }
 
     public String determinarQuincena(List<Acopio> acopio){

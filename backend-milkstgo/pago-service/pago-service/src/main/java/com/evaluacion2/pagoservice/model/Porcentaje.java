@@ -12,9 +12,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class Porcentaje {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private String proveedor;
     private String grasa;
     private String solidototal;

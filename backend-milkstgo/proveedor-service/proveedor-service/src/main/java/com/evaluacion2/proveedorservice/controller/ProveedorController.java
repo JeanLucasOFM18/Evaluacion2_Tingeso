@@ -39,7 +39,7 @@ public class ProveedorController {
         return ResponseEntity.ok(proveedores);
     }
 
-    @GetMapping("/contarTurnos/{codigo}")
+    @GetMapping("/obtenerPorCodigo/{codigo}")
     public ResponseEntity<Proveedor> obtenerPorCodigo(@PathVariable("codigo") String codigo) {
         Proveedor proveedor = proveedorServices.obtenerPorCodigo(codigo);
         return ResponseEntity.ok(proveedor);

@@ -17,7 +17,7 @@ function Registro(){
 
     return (
         <div class="hero">
-            <div class="container">
+            <div class="container3">
                 <div class="image">
                     <div class="form-box">
                         <div class="form">
