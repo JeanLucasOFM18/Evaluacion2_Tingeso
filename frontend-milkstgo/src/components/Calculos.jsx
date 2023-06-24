@@ -21,7 +21,7 @@ function Calculos(){
                 <div class="row">
                     <h1 class="title-effect">Listado de Pagos</h1>
                 </div>
-                <div style={{ maxWidth: '100%', maxHeight: '500px', overflowY: 'auto' }}>
+                <div style={{ maxWidth: '80%', maxHeight: '800px', overflowY: 'auto' }}>
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr class="text-center">
