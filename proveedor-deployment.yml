@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proveedor-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proveedor
+  template:
+    metadata:
+      labels:
+        app: proveedor
+    spec:
+      containers:
+        - name: proveedor
+          image: jeanlucasofm/proveedor-service
+          env:
+            - name: POSTGRES_HOST
+              value: postgres-service
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_DATABASE
+              value: "Tingeso2"
+            - name: POSTGRES_USERNAME
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              value: "1234"
+          ports:
+            - containerPort: 8082

@@ -32,7 +32,7 @@ function Acopio() {
           </div>
           <div style={{ textAlign: 'center' }}>
             <button type="submit" class="btn btn-primary" onClick={agregarAcopio}>
-              Subir archivo
+              Subir
             </button>
           </div>
         </div>

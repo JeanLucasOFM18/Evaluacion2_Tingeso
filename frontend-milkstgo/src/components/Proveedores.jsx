@@ -21,7 +21,7 @@ function Proveedores(){
                 <div className="row">
                     <h1 className="title-effect">Listado de Proveedores</h1>
                 </div>
-                <div style={{ maxWidth: '80%', maxHeight: '800px', overflow: 'auto'}}>
+                <div style={{ maxWidth: '80%', maxHeight: '500px', overflow: 'auto'}}>
                     <table className="table table-dark table-striped">
                         <thead>
                         <tr className="text-center">

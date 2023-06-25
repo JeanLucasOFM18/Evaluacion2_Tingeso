@@ -32,7 +32,7 @@ function Porcentaje() {
           </div>
           <div style={{ textAlign: 'center' }}>
             <button type="submit" class="btn btn-primary" onClick={agregarPorcentaje}>
-              Subir archivo
+              Subir
             </button>
           </div>
         </div>
