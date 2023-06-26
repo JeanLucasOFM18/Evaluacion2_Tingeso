@@ -2,29 +2,27 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: proveedor-deployment
+  labels:
+    app: proveedor-deployment
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: proveedor
+      app: proveedor-deployment
+  replicas: 2
   template:
     metadata:
       labels:
-        app: proveedor
+        app: proveedor-deployment
     spec:
       containers:
         - name: proveedor
           image: jeanlucasofm/proveedor-service
-          env:
-            - name: POSTGRES_HOST
-              value: postgres-service
-            - name: POSTGRES_PORT
-              value: "5432"
-            - name: POSTGRES_DATABASE
-              value: "Tingeso2"
-            - name: POSTGRES_USERNAME
-              value: "postgres"
-            - name: POSTGRES_PASSWORD
-              value: "1234"
           ports:
             - containerPort: 8082
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://10.105.220.76:5432/tingeso2"  # Reemplaza <postgres-service-ip> con la IP del servicio PostgreSQL
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "postgres"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "1234"

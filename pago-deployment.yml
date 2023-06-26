@@ -19,3 +19,10 @@ spec:
           image: jeanlucasofm/pago-service
           ports:
             - containerPort: 8085
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://10.105.220.76:5432/tingeso2"  # Reemplaza <postgres-service-ip> con la IP del servicio PostgreSQL
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "postgres"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "1234"

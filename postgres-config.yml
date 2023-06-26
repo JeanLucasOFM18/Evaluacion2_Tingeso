@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+data:
+  postgres.url: jdbc:postgresql://localhost:5432/Tingeso2
+  postgres.username: postgres
+  postgres.password: "1234"
