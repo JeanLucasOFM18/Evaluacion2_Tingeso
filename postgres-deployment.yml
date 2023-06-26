@@ -1,21 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: postgres-deployment
+  labels:
+    app: postgres-deployment
 spec:
   selector:
     matchLabels:
-      app: postgres
+      app: postgres-deployment
   replicas: 1
   template:
     metadata:
       labels:
-        app: postgres
+        app: postgres-deployment
     spec:
       volumes:
-        - name: init-script
-          configMap:
-            name: postgres-config
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: postgres-pvc
       containers:
         - name: postgres
           image: postgres
@@ -27,6 +29,18 @@ spec:
             - name: POSTGRES_PASSWORD
               value: "1234"
           volumeMounts:
-            - name: init-script
-              mountPath: /docker-entrypoint-initdb.d
-              readOnly: true
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

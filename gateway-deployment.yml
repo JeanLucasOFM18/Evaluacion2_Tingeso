@@ -23,4 +23,6 @@ spec:
             - name: SPRING_CLOUD_CONFIG_ENABLED
               value: "true"
             - name: SPRING_CLOUD_CONFIG_URI
-              value: "http://10.97.158.229:8081"
+              value: "http://config-service:8081"
+            - name: GATEWAY_CORS_ALLOWED_ORIGIN
+              value: "http://frontend-service:3000"
