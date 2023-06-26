@@ -9,7 +9,7 @@ function Registro(){
     const [retencion, setRetencion] = React.useState("");
     
     const agregarProveedor = async () =>{
-        await axios.post('http://localhost:8080/proveedor/crear', {
+        await axios.post('http://gateway-service:8080/proveedor/crear', {
             codigo, nombre, categoria, retencion
         })
         window.location.reload();

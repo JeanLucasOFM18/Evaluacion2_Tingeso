@@ -20,8 +20,12 @@ spec:
           ports:
             - containerPort: 8084
           env:
+            - name: SPRING_CLOUD_CONFIG_ENABLED
+              value: "true"
+            - name: SPRING_CLOUD_CONFIG_URI
+              value: "http://config-service:8081"
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://10.105.220.76:5432/tingeso2"  # Reemplaza <postgres-service-ip> con la IP del servicio PostgreSQL
+              value: "jdbc:postgresql://postgres-service:5432/tingeso2"
             - name: SPRING_DATASOURCE_USERNAME
               value: "postgres"
             - name: SPRING_DATASOURCE_PASSWORD

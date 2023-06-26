@@ -30,7 +30,3 @@ spec:
               value: "postgres"
             - name: SPRING_DATASOURCE_PASSWORD
               value: "1234"
-            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
-              value: "http://eureka-service:8761/eureka/"
-            - name: eureka.instance.preferIpAddress
-              value: "true"

@@ -11,7 +11,7 @@ function Calculos(){
     }, [])
 
     const cargarCalculos = async () =>{
-        const respuesta = await axios.get('http://localhost:8080/pago/calculos');
+        const respuesta = await axios.get('http://gateway-service:8080/pago/calculos');
         setDatos(respuesta.data)
     }
 

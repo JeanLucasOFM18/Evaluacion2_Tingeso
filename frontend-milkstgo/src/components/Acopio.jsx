@@ -16,7 +16,7 @@ function Acopio() {
         const formData = new FormData();
         formData.append('file', archivo); // Agrega el archivo al FormData
   
-        await axios.post('http://localhost:8080/acopio/subir', formData);
+        await axios.post('http://gateway-service:8080/acopio/subir', formData);
         window.location.reload();
       } catch (error) {
         console.error(error);

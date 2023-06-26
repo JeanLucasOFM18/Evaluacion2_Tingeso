@@ -11,7 +11,7 @@ function Proveedores(){
     }, [])
 
     const cargarProveedores = async () =>{
-        const respuesta = await axios.get('http://localhost:8080/proveedor/listado');
+        const respuesta = await axios.get('http://gateway-service:8080/proveedor/listado');
         setDatos(respuesta.data)
     }
 
