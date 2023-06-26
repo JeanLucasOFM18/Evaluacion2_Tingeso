@@ -12,16 +12,21 @@ spec:
       labels:
         app: postgres
     spec:
-      containers:
-      - name: postgres
-        image: postgres
-        ports:
-        - containerPort: 5432
-        env:
-          - name: POSTGRES_USER
-            value: "postgres"
-          - name: POSTGRES_PASSWORD
-            value: "1234" 
-        envFrom:
-        - configMapRef:
+      volumes:
+        - name: init-script
+          configMap:
             name: postgres-config
+      containers:
+        - name: postgres
+          image: postgres
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              value: "1234"
+          volumeMounts:
+            - name: init-script
+              mountPath: /docker-entrypoint-initdb.d
+              readOnly: true
