@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: jeanlucasofm/frontend-milkstgo
+          image: jeanlucasofm/frontend-service
           ports:
             - containerPort: 3000
