@@ -6,6 +6,8 @@ eureka:
     register-with-eureka: true
     service-url:
       default-zone: http://eureka-service:8761/eureka
+  instance:
+    hostname: localhost
 spring:
   cloud:
     gateway:
@@ -23,7 +25,7 @@ spring:
             allow-credentials: true
       routes:
         - id: proveedor-service
-          uri: lb://proveedor-service:8082
+          uri: lb://proveedor-service
           predicates:
             - Path=/proveedor/**
         - id: acopio-service
