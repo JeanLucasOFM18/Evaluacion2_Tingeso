@@ -4,7 +4,7 @@ const Home = () =>{
     return <div className="hero">
         <div className="text-box">
             <h1>MilkStgo</h1>
-            <h3>La mejor productora de lácteos de Chile</h3>
+            <h3>La mejor productora de lácteos del pais</h3>
         </div>
         <div className="images">
             <img src="https://i.postimg.cc/Ss2MWdkd/imagen-2023-04-20-165925490-removebg-preview.png" className="shape" alt="Shape" />

@@ -12,6 +12,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Collections;
 import java.util.Date;
@@ -138,6 +139,7 @@ public class PagoService {
                 new ParameterizedTypeReference<List<Proveedor>>() {}
         );
         List<Proveedor> proveedores = responseEntity.getBody();
+        System.out.println("SE IMPRIMIO LOS PROVEEDORES");
         return proveedores;
     }
 
@@ -167,6 +169,7 @@ public class PagoService {
         return dataAcopio;
     }
 
+    /*
     public List<Acopio> findByProveedorAcopio(String codigo) {
         String url = "http://acopio-service/acopio/findByProveedor/" + codigo;
         ResponseEntity<List<Acopio>> responseEntity = restTemplate.exchange(
@@ -175,6 +178,28 @@ public class PagoService {
                 null,
                 new ParameterizedTypeReference<List<Acopio>>() {}
         );
+        List<Acopio> acopios = responseEntity.getBody();
+        return acopios;
+    }*/
+
+    public List<Acopio> findByProveedorAcopio(String codigo) {
+        System.out.println("CODIGO: " + codigo);
+
+        String baseUrl = "http://acopio-service";
+        String endpoint = "/acopio/findByProveedor/{codigo}";
+
+        String url = UriComponentsBuilder.fromHttpUrl(baseUrl)
+                .path(endpoint)
+                .buildAndExpand(codigo)
+                .toUriString();
+
+        ResponseEntity<List<Acopio>> responseEntity = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Acopio>>() {}
+        );
+
         List<Acopio> acopios = responseEntity.getBody();
         return acopios;
     }

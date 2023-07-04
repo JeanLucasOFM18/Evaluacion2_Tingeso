@@ -1,0 +1,25 @@
+Comandos Docker:
+
+1) docker build -t jeanlucasofm/nombre .
+2) docker push jeanlucasofm/nombre
+
+Comandos Minikube:
+1) minikube start
+2) kubectl get pods
+3) kubectl get services
+4) kubectl apply -f nombre
+5) kubectl delete -f nombre
+6) kubectl rollout restart deployment nombre
+7) kubectl port-forward nombre-deployment puerto:puerto
+
+Comando Postgres Minikube:
+1) kubectl exec -it nombre_del_pod -- bash
+2) psql -U postgres -d nombre_bd
+3) psql -U postgres
+4) CREATE DATABASE nombre;
+5) \l
+6) \q
+7) exit
+
+ID Grafana:
+- 11378

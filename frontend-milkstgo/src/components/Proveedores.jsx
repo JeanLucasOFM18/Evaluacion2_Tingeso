@@ -3,7 +3,6 @@ import axios from "axios"
 import "../styles/Proveedores.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function Proveedores(){
     const [datos, setDatos] = React.useState([]);
     useEffect(() => {
@@ -11,8 +10,12 @@ function Proveedores(){
     }, [])
 
     const cargarProveedores = async () =>{
-        const respuesta = await axios.get('http://gateway-service:8080/proveedor/listado');
-        setDatos(respuesta.data)
+        try {
+            const respuesta = await axios.get('http://localhost:8080/proveedor/listado');
+            setDatos(respuesta.data);
+          } catch (error) {
+            console.error(error);
+          }
     }
 
     return (

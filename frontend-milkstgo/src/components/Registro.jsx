@@ -9,7 +9,7 @@ function Registro(){
     const [retencion, setRetencion] = React.useState("");
     
     const agregarProveedor = async () =>{
-        await axios.post('http://gateway-service:8080/proveedor/crear', {
+        await axios.post('http://localhost:8080/proveedor/crear', {
             codigo, nombre, categoria, retencion
         })
         window.location.reload();
@@ -21,7 +21,7 @@ function Registro(){
                 <div class="image">
                     <div class="form-box">
                         <div class="form">
-                            <form action="crearProveedor" method="post">
+                            <form>
                                 <h2>Registro</h2>
                                 <div class="input-box">
                                     <input type="text" id="codigo" name="codigo" required maxlength="5" onChange={(e) => setCodigo(e.target.value)}/>

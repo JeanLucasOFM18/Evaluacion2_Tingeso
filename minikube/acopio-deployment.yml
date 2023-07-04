@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: porcentaje-deployment
+  name: acopio-deployment
   labels:
-    app: porcentaje-deployment
+    app: acopio-deployment
 spec:
   selector:
     matchLabels:
-      app: porcentaje-deployment
+      app: acopio-deployment
   replicas: 2
   template:
     metadata:
       labels:
-        app: porcentaje-deployment
+        app: acopio-deployment
     spec:
       containers:
-        - name: porcentaje
-          image: jeanlucasofm/porcentaje-service
+        - name: acopio
+          image: jeanlucasofm/acopio-service
           ports:
-            - containerPort: 8084
+            - containerPort: 8083
           env:
             - name: SPRING_CLOUD_CONFIG_ENABLED
               value: "true"
             - name: SPRING_CLOUD_CONFIG_URI
               value: "http://config-service:8081"
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://postgres-service:5432/tingeso2"
+              value: "jdbc:postgresql://postgres-service:5432/acopio"
             - name: SPRING_DATASOURCE_USERNAME
               value: "postgres"
             - name: SPRING_DATASOURCE_PASSWORD
@@ -34,3 +34,20 @@ spec:
               value: http://eureka-service:8761
             - name: eureka.instance.preferIpAddress
               value: "true"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: acopio-service
+  labels:
+    app: acopio-service
+spec:
+  selector:
+    app: acopio-deployment
+  ports:
+    - protocol: TCP
+      port: 8083
+      targetPort: 8083
+  type: LoadBalancer

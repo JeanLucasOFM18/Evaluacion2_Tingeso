@@ -24,9 +24,24 @@ spec:
               value: "true"
             - name: SPRING_CLOUD_CONFIG_URI
               value: "http://config-service:8081"
-            - name: GATEWAY_CORS_ALLOWED_ORIGIN
-              value: "http://frontend-service:3000"
             - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
               value: http://eureka-service:8761
             - name: eureka.instance.preferIpAddress
               value: "true"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-service
+  labels:
+    app: gateway-service
+spec:
+  selector:
+    app: gateway-deployment
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer

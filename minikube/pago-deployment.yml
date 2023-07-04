@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: proveedor-deployment
+  name: pago-deployment
   labels:
-    app: proveedor-deployment
+    app: pago-deployment
 spec:
   selector:
     matchLabels:
-      app: proveedor-deployment
+      app: pago-deployment
   replicas: 2
   template:
     metadata:
       labels:
-        app: proveedor-deployment
+        app: pago-deployment
     spec:
       containers:
-        - name: proveedor
-          image: jeanlucasofm/proveedor-service
+        - name: pago
+          image: jeanlucasofm/pago-service:latest
           ports:
-            - containerPort: 8082
+            - containerPort: 8085
           env:
             - name: SPRING_CLOUD_CONFIG_ENABLED
               value: "true"
             - name: SPRING_CLOUD_CONFIG_URI
               value: "http://config-service:8081"
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://postgres-service:5432/tingeso2"
+              value: "jdbc:postgresql://postgres-service:5432/pago"
             - name: SPRING_DATASOURCE_USERNAME
               value: "postgres"
             - name: SPRING_DATASOURCE_PASSWORD
@@ -34,3 +34,20 @@ spec:
               value: http://eureka-service:8761
             - name: eureka.instance.preferIpAddress
               value: "true"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pago-service
+  labels:
+    app: pago-service
+spec:
+  selector:
+    app: pago-deployment
+  ports:
+    - protocol: TCP
+      port: 8085
+      targetPort: 8085
+  type: LoadBalancer
